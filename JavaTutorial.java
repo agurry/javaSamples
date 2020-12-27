@@ -9,34 +9,35 @@ import java.util.Scanner;
 public class JavaTutorial{
 	public static void main(String[] args){
 		Scanner learnAbout = new Scanner(System.in);
-		int choice = 1;
+		boolean continueLearning = true;
 
-		while (choice != 0)
+		while (continueLearning)
 		{
-			displayMenu();
-
-			choice = getAnInt(learnAbout);
-
-			switch(choice){
-				case 0: 
-					choice = 0;
-					break;
-				case 1:
-					IntegerPractice.runIntProgram();
-					break;
-				default:
-					System.out.println("Invalid selection. Please try again.");
-
-			}
+			continueLearning = runProgram(learnAbout);
 		}	
 	}
 
-	public static void displayMenu(){
+
+	public static boolean runProgram(Scanner learnAbout){
 		System.out.println("\nWelcome to my java tutorial!");
 		System.out.println("0. Exit");
 		System.out.println("1. Integer Class");
 		System.out.print("Please select a number: ");
+
+		int choice = getAnInt(learnAbout);
+
+		switch(choice){
+			case 0: 
+				return false;
+			case 1:
+				IntegerPractice.runIntProgram();
+				break;
+			default:
+				System.out.println("Invalid selection. Please try again.");
+			}
+		return true;
 	}
+
 
 	public static int getAnInt(Scanner myChoice){
 	
